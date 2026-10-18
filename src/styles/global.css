@@ -70,6 +70,20 @@ main.wrap {
 /* Intro */
 .intro {
   margin: 36px 0 44px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.intro .me img {
+  display: block;
+  width: 96px;
+  height: 96px;
+}
+
+.intro-text {
+  flex: 1;
+  min-width: 0;
 }
 
 .intro p {
