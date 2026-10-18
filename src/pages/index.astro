@@ -8,11 +8,25 @@ import Footer from "../components/Footer.astro";
   <Nav />
   <main class="wrap">
     <div class="intro">
-      <p>
-        Student developer based in Odisha, India, leading Team Origin Logic. I
-        build clean, fast software with interfaces that get out of the way.
-      </p>
-      <div class="status"><span class="dot"></span>not available for work</div>
+      <picture class="me">
+        <source
+          srcset="https://github.com/user-attachments/assets/df4cc7ef-ddad-4641-a791-60905834f66b"
+          media="(prefers-color-scheme: dark)"
+        />
+        <img
+          src="https://github.com/user-attachments/assets/33953376-67cc-4c7c-9eb2-c99e826fb9ce"
+          alt="Abhijit Swain"
+          width="384"
+          height="384"
+        />
+      </picture>
+      <div class="intro-text">
+        <p>
+          Student developer based in Odisha, India, leading Team Origin Logic. I
+          build clean, fast software with interfaces that get out of the way.
+        </p>
+        <div class="status"><span class="dot"></span>not available for work</div>
+      </div>
     </div>
 
     <section id="projects">
