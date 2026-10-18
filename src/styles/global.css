@@ -9,6 +9,7 @@
   --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --max-width: 620px;
+  --nav-h: 46px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -95,7 +96,7 @@ main.wrap {
 /* Sections */
 section {
   margin-bottom: 44px;
-  scroll-margin-top: 72px;
+  scroll-margin-top: calc(var(--nav-h) + env(safe-area-inset-top) + 16px);
 }
 
 .section-label {
