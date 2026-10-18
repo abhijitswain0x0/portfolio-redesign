@@ -8,11 +8,25 @@ import Footer from "../components/Footer.astro";
   <Nav />
   <main class="wrap">
     <div class="intro">
-      <p>
-        Student developer based in Odisha, India, leading Team Origin Logic. I
-        build clean, fast software with interfaces that get out of the way.
-      </p>
-      <div class="status"><span class="dot"></span>not available for work</div>
+      <picture class="me">
+        <source
+          srcset="/me-dark.svg"
+          media="(prefers-color-scheme: dark)"
+        />
+        <img
+          src="/me-light.svg"
+          alt="Abhijit Swain"
+          width="384"
+          height="384"
+        />
+      </picture>
+      <div class="intro-text">
+        <p>
+          Student developer based in Odisha, India, leading Team Origin Logic. I
+          build clean, fast software with interfaces that get out of the way.
+        </p>
+        <div class="status"><span class="dot"></span>not available for work</div>
+      </div>
     </div>
 
     <section id="projects">
