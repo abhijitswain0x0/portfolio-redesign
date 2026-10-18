@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout title="Abhijit Swain">
+  <Nav />
+  <main class="wrap">
+    <div class="intro">
+      <p>
+        Student developer based in Odisha, India, leading Team Origin Logic. I
+        build clean, fast software with interfaces that get out of the way.
+      </p>
+      <div class="status"><span class="dot"></span>not available for work</div>
+    </div>
+
+    <section id="projects">
+      <h2 class="section-label">projects <span class="count">2</span></h2>
+      <ul class="rows">
+        <li>
+          <div class="row">
+            <span class="t">GitPal</span>
+            <span class="d"
+              >Visual Git wrapper that makes branches, commits and merges
+              readable, with real-time collaboration</span
+            >
+            <span class="m">lead dev</span>
+          </div>
+        </li>
+        <li>
+          <div class="row">
+            <span class="t">Blink</span>
+            <span class="d"
+              >Lightweight desktop AI utility with a Raycast-like floating
+              window</span
+            >
+            <span class="m">lead dev</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="writing">
+      <h2 class="section-label">writing <span class="count">1</span></h2>
+      <ul class="rows">
+        <li>
+          <a class="row" href="/blogs/how-i-instinct-is-doing-stuff/">
+            <span class="t">How I (Instinct) is doing stuff</span>
+            <span class="d"
+              >Compiling dwm without sudo, then putting its layouts through a
+              headless test</span
+            >
+            <span class="m">28 sep 2026</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="about" id="about">
+      <h2 class="section-label">about</h2>
+      <p>
+        Most days you'll find me deep in git internals, terminal tooling, or
+        planning the next thing worth shipping.
+      </p>
+      <p class="skills">
+        <b>C++</b> · <b>Odin</b> · <b>Go</b> · <b>Python</b> · embedded systems
+        · system design · terminal tooling
+      </p>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
