@@ -4,7 +4,38 @@
 
 <header class="site-nav">
   <div class="nav-inner">
-    <a class="name" href="/">abhijit swain</a>
+    <a class="name" href="/">Abhijit Swain</a>
+    <button class="theme-toggle" type="button" aria-label="switch theme">
+      <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+        <mask id="moon-cutout">
+          <rect width="24" height="24" fill="white"></rect>
+          <circle class="cutout" cx="26" cy="-2" r="6.5" fill="black"></circle>
+        </mask>
+        <circle
+          class="core"
+          cx="12"
+          cy="12"
+          r="5"
+          fill="currentColor"
+          mask="url(#moon-cutout)"
+        ></circle>
+        <g
+          class="rays"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        >
+          <line x1="12" y1="1.5" x2="12" y2="4"></line>
+          <line x1="12" y1="20" x2="12" y2="22.5"></line>
+          <line x1="1.5" y1="12" x2="4" y2="12"></line>
+          <line x1="20" y1="12" x2="22.5" y2="12"></line>
+          <line x1="4.6" y1="4.6" x2="6.4" y2="6.4"></line>
+          <line x1="17.6" y1="17.6" x2="19.4" y2="19.4"></line>
+          <line x1="4.6" y1="19.4" x2="6.4" y2="17.6"></line>
+          <line x1="17.6" y1="6.4" x2="19.4" y2="4.6"></line>
+        </g>
+      </svg>
+    </button>
   </div>
 </header>
 
@@ -23,7 +54,7 @@
     max-width: var(--max-width);
     margin: 0 auto;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     padding-top: 13px;
     padding-bottom: 13px;
     padding-left: calc(20px + env(safe-area-inset-left));
@@ -42,3 +73,52 @@
     color: var(--fg);
   }
 </style>
+
+<script>
+  const root = document.documentElement;
+  const toggle = document.querySelector(".theme-toggle");
+  const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+  const savedTheme = () => {
+    try {
+      return localStorage.getItem("theme");
+    } catch {
+      return null;
+    }
+  };
+  const currentTheme = () =>
+    root.dataset.theme || (darkQuery.matches ? "dark" : "light");
+
+  function applyTheme(theme, persist) {
+    root.dataset.theme = theme;
+    if (persist) {
+      try {
+        localStorage.setItem("theme", theme);
+      } catch {}
+    }
+    toggle?.setAttribute(
+      "aria-label",
+      theme === "dark" ? "switch to light mode" : "switch to dark mode",
+    );
+    document
+      .querySelectorAll('meta[name="theme-color"]')
+      .forEach((m) => m.remove());
+    const meta = document.createElement("meta");
+    meta.name = "theme-color";
+    meta.content = theme === "dark" ? "#000000" : "#ffffff";
+    document.head.appendChild(meta);
+  }
+
+  applyTheme(currentTheme(), false);
+
+  toggle?.addEventListener("click", () => {
+    applyTheme(currentTheme() === "dark" ? "light" : "dark", true);
+  });
+
+  darkQuery.addEventListener("change", (event) => {
+    const saved = savedTheme();
+    if (saved !== "light" && saved !== "dark") {
+      applyTheme(event.matches ? "dark" : "light", false);
+    }
+  });
+</script>
