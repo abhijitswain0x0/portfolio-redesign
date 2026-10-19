@@ -25,6 +25,12 @@
 
 /* Manual theme override (set by the navbar toggle) */
 html[data-theme="light"] {
+  --bg: #ffffff;
+  --fg: #1d1d1f;
+  --dim: #6e6e73;
+  --faint: #d2d2d7;
+  --accent: #9cc8ec;
+  --accent-text: #3f74a8;
   color-scheme: light;
 }
 
