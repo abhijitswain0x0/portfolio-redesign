@@ -26,6 +26,37 @@ import Nav from "../components/Nav.astro";
         </p>
         <div class="status">not available for work</div>
       </div>
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+---
+
+<BaseLayout title="Abhijit Swain">
+  <Nav />
+  <main class="wrap">
+    <div class="intro">
+      <div class="me">
+        <img
+          class="portrait light"
+          src="/me-light.svg"
+          alt="Abhijit Swain"
+          width="384"
+          height="384"
+        />
+        <img
+          class="portrait dark"
+          src="/me-dark.svg"
+          alt=""
+          width="384"
+          height="384"
+          aria-hidden="true"
+        />
+      </div>
+      <div class="intro-text">
+        <p>
+          Student developer based in Odisha, India, leading Team Origin Logic. I
+          build clean, fast software with interfaces that get out of the way.
+        </p>
+      </div>
     </div>
 
     <section id="projects">
