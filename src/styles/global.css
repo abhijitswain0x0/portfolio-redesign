@@ -123,9 +123,18 @@ section {
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.06em;
-  text-transform: lowercase;
   color: var(--dim);
   margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--faint);
 }
 
 .section-label .count {
