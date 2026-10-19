@@ -7,33 +7,6 @@ import Nav from "../components/Nav.astro";
   <Nav />
   <main class="wrap">
     <div class="intro">
-      <picture class="me">
-        <source
-          srcset="/me-dark.svg"
-          media="(prefers-color-scheme: dark)"
-        />
-        <img
-          src="/me-light.svg"
-          alt="Abhijit Swain"
-          width="384"
-          height="384"
-        />
-      </picture>
-      <div class="intro-text">
-        <p>
-          Student developer based in Odisha, India, leading Team Origin Logic. I
-          build clean, fast software with interfaces that get out of the way.
-        </p>
-        <div class="status">not available for work</div>
-      </div>
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Nav from "../components/Nav.astro";
----
-
-<BaseLayout title="Abhijit Swain">
-  <Nav />
-  <main class="wrap">
-    <div class="intro">
       <div class="me">
         <img
           class="portrait light"
