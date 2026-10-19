@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
-import Footer from "../components/Footer.astro";
 ---
 
 <BaseLayout title="Abhijit Swain">
@@ -52,6 +51,84 @@ import Footer from "../components/Footer.astro";
         </li>
       </ul>
     </section>
+
+    <section id="contact">
+      <h2 class="section-label">contact <span class="count">2</span></h2>
+      <ul class="rows">
+        <li>
+          <button
+            class="row copy-email"
+            type="button"
+            data-email="abhijitswain0x0@proton.me"
+          >
+            <span class="t">abhijitswain0x0@proton.me</span>
+            <span class="d">click to copy</span>
+          </button>
+        </li>
+        <li>
+          <a
+            class="row"
+            href="https://signal.me/#eu/sckfK5kPIaXFR8fxmjEN99mWRlwajR_ZMbNJ9_jiS5cyimL-yZJPrpLx5oLoRrRX"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="t">Signal</span>
+            <span class="d">signal.me</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="social">
+      <h2 class="section-label">social <span class="count">2</span></h2>
+      <ul class="rows">
+        <li>
+          <a
+            class="row"
+            href="https://x.com/abhijitswain0x0"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="t">twitter</span>
+            <span class="d">@abhijitswain0x0</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="row"
+            href="https://github.com/abhijitswain0x0"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="t">github</span>
+            <span class="d">abhijitswain0x0</span>
+          </a>
+        </li>
+      </ul>
+    </section>
   </main>
-  <Footer />
+
+  <div class="copy-toast" role="status">copied to clipboard</div>
+
+  <script>
+    const copyBtn = document.querySelector(".copy-email");
+    const toast = document.querySelector(".copy-toast");
+    let hideTimer;
+    copyBtn?.addEventListener("click", async () => {
+      const email = copyBtn.getAttribute("data-email") || "";
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch {
+        const ta = document.createElement("textarea");
+        ta.value = email;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+      }
+      toast?.classList.add("show");
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => toast?.classList.remove("show"), 1600);
+    });
+  </script>
 </BaseLayout>
