@@ -23,6 +23,21 @@
   }
 }
 
+/* Manual theme override (set by the navbar toggle) */
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  --bg: #000000;
+  --fg: #f5f5f7;
+  --dim: #98989d;
+  --faint: #38383a;
+  --accent: #a9cfeb;
+  --accent-text: #a9cfeb;
+  color-scheme: dark;
+}
+
 /* Reset & base */
 *,
 *::before,
@@ -84,14 +99,44 @@ main.wrap {
   gap: 18px;
 }
 
-.intro .me img {
+.intro .me .portrait {
   display: block;
   width: 128px;
   height: 128px;
 }
 
+.intro .me .portrait.dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .intro .me .portrait.light {
+    display: none;
+  }
+
+  .intro .me .portrait.dark {
+    display: block;
+  }
+}
+
+html[data-theme="light"] .intro .me .portrait.light {
+  display: block;
+}
+
+html[data-theme="light"] .intro .me .portrait.dark {
+  display: none;
+}
+
+html[data-theme="dark"] .intro .me .portrait.light {
+  display: none;
+}
+
+html[data-theme="dark"] .intro .me .portrait.dark {
+  display: block;
+}
+
 @media (max-width: 360px) {
-  .intro .me img {
+  .intro .me .portrait {
     width: 104px;
     height: 104px;
   }
@@ -105,13 +150,6 @@ main.wrap {
 .intro p {
   max-width: 46ch;
   font-size: 16px;
-}
-
-.intro .status {
-  font-family: var(--mono);
-  font-size: 12.5px;
-  color: var(--dim);
-  margin-top: 14px;
 }
 
 /* Sections */
@@ -244,4 +282,59 @@ ul.rows li button.row:hover .t {
 /* Keep the Socials rows clean without a divider between them. */
 #social ul.rows li:first-child .row {
   border-bottom: none;
+}
+
+/* Theme toggle (navbar) */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin: -8px 0 -8px auto;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--accent-text);
+}
+
+.theme-toggle svg {
+  display: block;
+}
+
+.theme-toggle .core {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle .cutout {
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle .rays {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease;
+}
+
+html[data-theme="dark"] .theme-toggle .rays {
+  transform: rotate(-90deg) scale(0);
+  opacity: 0;
+}
+
+html[data-theme="dark"] .theme-toggle .core {
+  transform: scale(1.1);
+}
+
+html[data-theme="dark"] .theme-toggle .cutout {
+  transform: translate(-10px, 11.5px);
 }
