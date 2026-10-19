@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout title="Not found - Abhijit Swain">
+  <Nav />
+  <main class="wrap">
+    <div class="intro">
+      <div class="intro-text">
+        <p>That page doesn't exist.</p>
+        <p class="back"><a href="/">Back home</a></p>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .back a {
+    display: inline-block;
+    padding: 10px 0;
+    color: var(--accent-text);
+  }
+</style>
