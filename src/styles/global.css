@@ -115,6 +115,10 @@ main.wrap {
   display: none;
 }
 
+.intro .me .portrait.light {
+  transform: scale(0.95);
+}
+
 @media (prefers-color-scheme: dark) {
   .intro .me .portrait.light {
     display: none;
