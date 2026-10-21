@@ -254,6 +254,7 @@ ul.rows li button.row {
   width: 100%;
   background: none;
   border: none;
+  border-bottom: 1px solid var(--faint);
   font: inherit;
   color: var(--fg);
   text-align: left;
@@ -287,11 +288,6 @@ ul.rows li button.row:hover .t {
 .copy-toast.show {
   opacity: 1;
   transform: translate(-50%, 0);
-}
-
-/* Keep the Socials rows clean without a divider between them. */
-#social ul.rows li:first-child .row {
-  border-bottom: none;
 }
 
 /* Theme toggle (navbar) */
