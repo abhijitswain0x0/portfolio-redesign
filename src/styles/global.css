@@ -6,8 +6,8 @@
   --faint: #d2d2d7;
   --accent: #9cc8ec;
   --accent-text: #3f74a8;
-  --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
-  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  --heading: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --max-width: 620px;
   color-scheme: light dark;
 }
@@ -169,7 +169,7 @@ section {
 }
 
 .section-label {
-  font-family: var(--mono);
+  font-family: var(--heading);
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.06em;
@@ -286,7 +286,7 @@ ul.rows li button.row:hover .t {
   z-index: 200;
   background: var(--fg);
   color: var(--bg);
-  font-family: var(--mono);
+  font-family: var(--heading);
   font-size: 12.5px;
   padding: 8px 14px;
   border-radius: 999px;
