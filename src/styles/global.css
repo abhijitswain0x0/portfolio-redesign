@@ -94,12 +94,12 @@ button {
 main.wrap {
   flex: 1;
   width: 100%;
-  padding-bottom: 64px;
+  padding-bottom: 48px;
 }
 
 /* Intro */
 .intro {
-  margin: 36px 0 44px;
+  margin: 36px 0 40px;
   display: flex;
   align-items: center;
   gap: 18px;
@@ -164,7 +164,7 @@ html[data-theme="dark"] .intro .me .portrait.dark {
 
 /* Sections */
 section {
-  margin-bottom: 44px;
+  margin-bottom: 40px;
   scroll-margin-top: 72px;
 }
 
@@ -174,7 +174,7 @@ section {
   font-weight: 400;
   letter-spacing: 0.06em;
   color: var(--dim);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -201,7 +201,7 @@ ul.rows li a.row {
   display: flex;
   align-items: baseline;
   gap: 10px;
-  padding: 9px 0;
+  padding: 12px 0;
   border-bottom: 1px solid var(--faint);
   text-decoration: none;
   color: var(--fg);
