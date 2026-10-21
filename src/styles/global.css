@@ -94,12 +94,12 @@ button {
 main.wrap {
   flex: 1;
   width: 100%;
-  padding-bottom: 64px;
+  padding-bottom: 48px;
 }
 
 /* Intro */
 .intro {
-  margin: 36px 0 44px;
+  margin: 36px 0 40px;
   display: flex;
   align-items: center;
   gap: 18px;
@@ -147,8 +147,8 @@ html[data-theme="dark"] .intro .me .portrait.dark {
 
 @media (max-width: 360px) {
   .intro .me .portrait {
-    width: 104px;
-    height: 104px;
+    width: 88px;
+    height: 88px;
   }
 }
 
@@ -164,7 +164,7 @@ html[data-theme="dark"] .intro .me .portrait.dark {
 
 /* Sections */
 section {
-  margin-bottom: 44px;
+  margin-bottom: 40px;
   scroll-margin-top: 72px;
 }
 
@@ -174,7 +174,7 @@ section {
   font-weight: 400;
   letter-spacing: 0.06em;
   color: var(--dim);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -201,7 +201,7 @@ ul.rows li a.row {
   display: flex;
   align-items: baseline;
   gap: 10px;
-  padding: 9px 0;
+  padding: 12px 0;
   border-bottom: 1px solid var(--faint);
   text-decoration: none;
   color: var(--fg);
@@ -232,7 +232,17 @@ ul.rows li a.row:hover .t {
   ul.rows li .row {
     flex-direction: column;
     gap: 2px;
-    padding: 12px 0;
+    padding: 8px 0;
+  }
+
+  ul.rows .t,
+  ul.rows .d {
+    line-height: 1.4;
+  }
+
+  .intro .me .portrait {
+    width: 96px;
+    height: 96px;
   }
 }
 
@@ -254,6 +264,7 @@ ul.rows li button.row {
   width: 100%;
   background: none;
   border: none;
+  border-bottom: 1px solid var(--faint);
   font: inherit;
   color: var(--fg);
   text-align: left;
@@ -287,11 +298,6 @@ ul.rows li button.row:hover .t {
 .copy-toast.show {
   opacity: 1;
   transform: translate(-50%, 0);
-}
-
-/* Keep the Socials rows clean without a divider between them. */
-#social ul.rows li:first-child .row {
-  border-bottom: none;
 }
 
 /* Theme toggle (navbar) */
