@@ -147,8 +147,8 @@ html[data-theme="dark"] .intro .me .portrait.dark {
 
 @media (max-width: 360px) {
   .intro .me .portrait {
-    width: 104px;
-    height: 104px;
+    width: 88px;
+    height: 88px;
   }
 }
 
@@ -232,7 +232,17 @@ ul.rows li a.row:hover .t {
   ul.rows li .row {
     flex-direction: column;
     gap: 2px;
-    padding: 12px 0;
+    padding: 8px 0;
+  }
+
+  ul.rows .t,
+  ul.rows .d {
+    line-height: 1.4;
+  }
+
+  .intro .me .portrait {
+    width: 96px;
+    height: 96px;
   }
 }
 
