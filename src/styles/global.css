@@ -188,7 +188,7 @@ section {
 }
 
 .section-label .count {
-  color: var(--faint);
+  color: var(--accent-text);
 }
 
 /* List rows */
