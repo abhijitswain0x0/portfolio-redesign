@@ -111,14 +111,86 @@
 
   applyTheme(currentTheme(), false);
 
-  toggle?.addEventListener("click", () => {
-    applyTheme(currentTheme() === "dark" ? "light" : "dark", true);
-  });
+  // Pixel wipe theme switch (demo). A staircase edge of square pixels sweeps
+  // diagonally across the screen: dark to light wipes from the top-left corner
+  // to the bottom-right, light to dark wipes back from the bottom-right to the
+  // top-left. The mask sprite is drawn once per direction; each switch only
+  // slides it with a compositor animation, so it stays smooth.
+  const CELL = 24;
+  const DURATION = 1700;
+  const sprites = {};
 
-  darkQuery.addEventListener("change", (event) => {
-    const saved = savedTheme();
-    if (saved !== "light" && saved !== "dark") {
-      applyTheme(event.matches ? "dark" : "light", false);
+  function buildSprite(down) {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const L = Math.ceil(w / CELL) + Math.ceil(h / CELL) + 6;
+    const canvas = document.createElement("canvas");
+    canvas.width = L * CELL;
+    canvas.height = L * CELL;
+    const ctx = canvas.getContext("2d");
+    if (!down) {
+      // same shape rotated half a turn, so the solid side faces bottom-right
+      ctx.translate(canvas.width, canvas.height);
+      ctx.rotate(Math.PI);
     }
+    ctx.fillStyle = "#000";
+    // solid body up to the diagonal, then a noisy band of random pixels
+    // (denser on the inside, sparser on the outside) as the leading edge
+    for (let r = 0; r < L; r++) {
+      const edge = L - 1 - r;
+      ctx.fillRect(0, r * CELL, Math.max(0, edge - 4) * CELL, CELL);
+      for (let c = Math.max(0, edge - 4); c <= edge + 4; c++) {
+        if (c >= L) break;
+        const t = Math.min(1, Math.max(0, (edge - c + 4.5) / 9));
+        const p = t * t * (3 - 2 * t);
+        if (Math.random() < p) ctx.fillRect(c * CELL, r * CELL, CELL, CELL);
+      }
+    }
+    return { url: canvas.toDataURL(), size: L * CELL, w, h };
+  }
+
+  toggle?.addEventListener("click", () => {
+    const next = currentTheme() === "dark" ? "light" : "dark";
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!document.startViewTransition || reduced) {
+      applyTheme(next, true);
+      return;
+    }
+    // dark -> light sweeps down, light -> dark sweeps up
+    const down = next === "light";
+    let sp = sprites[down];
+    if (!sp || sp.w !== window.innerWidth || sp.h !== window.innerHeight) {
+      sp = sprites[down] = buildSprite(down);
+    }
+    const { size } = sp;
+    const from = down ? `${-size}px ${-size}px` : `${sp.w}px ${sp.h}px`;
+    const to = down ? `0px 0px` : `${sp.w - size}px ${sp.h - size}px`;
+    const style = document.createElement("style");
+    style.textContent = `::view-transition-new(root){-webkit-mask-image:url(${sp.url});mask-image:url(${sp.url});-webkit-mask-size:${size}px ${size}px;mask-size:${size}px ${size}px;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:${from};mask-position:${from}}`;
+    document.head.appendChild(style);
+    const transition = document.startViewTransition(() => {
+      applyTheme(next, true);
+    });
+    transition.ready
+      .then(() => {
+        document.documentElement.animate(
+          { maskPosition: [from, to], webkitMaskPosition: [from, to] },
+          {
+            duration: DURATION,
+            easing: "cubic-bezier(0.5, 0, 0.2, 1)",
+            fill: "both",
+            pseudoElement: "::view-transition-new(root)",
+          },
+        );
+      })
+      .catch(() => {});
+    transition.finished.finally(() => {
+      style.remove();
+      // draw a fresh random edge for next time, off the critical path
+      delete sprites[down];
+      setTimeout(() => {
+        sprites[down] = buildSprite(down);
+      }, 200);
+    });
   });
 </script>
