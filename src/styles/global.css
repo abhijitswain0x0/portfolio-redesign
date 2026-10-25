@@ -229,10 +229,6 @@ ul.rows li a.row:hover .t {
   text-underline-offset: 3px;
 }
 
-#projects ul.rows li .row .t {
-  color: var(--accent-text);
-}
-
 @media (max-width: 639px) {
   ul.rows li .row {
     flex-direction: column;
