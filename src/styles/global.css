@@ -224,8 +224,15 @@ ul.rows .d {
   min-width: 0;
 }
 
-ul.rows li a.row:hover .t {
+ul.rows li a.row .t,
+ul.rows li button.row .t {
   color: var(--accent-text);
+}
+
+ul.rows li a.row:hover .t,
+ul.rows li button.row:hover .t {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 @media (max-width: 639px) {
@@ -269,10 +276,6 @@ ul.rows li button.row {
   color: var(--fg);
   text-align: left;
   cursor: pointer;
-}
-
-ul.rows li button.row:hover .t {
-  color: var(--accent-text);
 }
 
 /* Copied-to-clipboard toast */
