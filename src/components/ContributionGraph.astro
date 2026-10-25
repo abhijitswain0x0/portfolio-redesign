@@ -99,7 +99,10 @@ if (days) {
     --l2: #9cc8ec;
     --l3: #6aa7d8;
     --l4: #3f74a8;
-    --gap: 5px;
+    --gap: 4px;
+    --cell: 14px;
+    width: max-content;
+    max-width: 100%;
     padding-top: 6px;
   }
   @media (prefers-color-scheme: dark) {
@@ -131,13 +134,13 @@ if (days) {
   .cg-months,
   .cg-grid {
     display: grid;
-    grid-template-columns: repeat(var(--weeks), 1fr);
+    grid-template-columns: repeat(var(--weeks), var(--cell));
     gap: var(--gap);
   }
   .cg-months {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--dim);
-    margin-bottom: 6px;
+    margin-bottom: 5px;
     line-height: 1.2;
   }
   .cg-months span {
@@ -166,9 +169,9 @@ if (days) {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
-    margin-top: 10px;
-    font-size: 12px;
+    gap: 16px;
+    margin-top: 8px;
+    font-size: 11px;
     color: var(--dim);
   }
   .cg-legend {
@@ -178,8 +181,8 @@ if (days) {
     white-space: nowrap;
   }
   .cg-legend i {
-    width: 10px;
-    height: 10px;
-    border-radius: 3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
   }
 </style>
