@@ -8,7 +8,9 @@ type Day = { date: string; level: number; count: number };
 
 async function load(): Promise<Day[] | null> {
   try {
-    const res = await fetch(`https://github.com/users/${USER}/contributions`);
+    const res = await fetch(`https://github.com/users/${USER}/contributions`, {
+      signal: AbortSignal.timeout(10000),
+    });
     if (!res.ok) return null;
     const html = await res.text();
     const tips = new Map<string, string>();
