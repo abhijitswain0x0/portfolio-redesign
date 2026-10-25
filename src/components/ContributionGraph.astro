@@ -100,9 +100,9 @@ if (days) {
     --l3: #6aa7d8;
     --l4: #3f74a8;
     --gap: 4px;
-    --cell: 14px;
-    width: max-content;
-    max-width: 100%;
+    width: 100%;
+    max-width: 430px;
+    overflow: hidden;
     padding-top: 6px;
   }
   @media (prefers-color-scheme: dark) {
@@ -134,7 +134,7 @@ if (days) {
   .cg-months,
   .cg-grid {
     display: grid;
-    grid-template-columns: repeat(var(--weeks), minmax(0, var(--cell)));
+    grid-template-columns: repeat(var(--weeks), minmax(0, 1fr));
     gap: var(--gap);
   }
   .cg-months {
@@ -149,6 +149,8 @@ if (days) {
   }
   .cg-week {
     display: grid;
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-rows: repeat(7, auto);
     gap: var(--gap);
   }
