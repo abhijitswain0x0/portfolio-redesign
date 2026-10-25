@@ -224,13 +224,11 @@ ul.rows .d {
   min-width: 0;
 }
 
-ul.rows li a.row .t,
-ul.rows li button.row .t {
+ul.rows li a.row .t
   color: var(--accent-text);
 }
 
-ul.rows li a.row:hover .t,
-ul.rows li button.row:hover .t {
+ul.rows li a.row:hover .t
   text-decoration: underline;
   text-underline-offset: 3px;
 }
