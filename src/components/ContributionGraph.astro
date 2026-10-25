@@ -1,8 +1,8 @@
 ---
-// Public GitHub contributions for the last 90 days, fetched at build time.
+// Public GitHub contributions for the last 120 days, fetched at build time.
 // If the fetch fails the section is simply left out.
 const USER = "abhijitswain0x0";
-const DAYS = 90;
+const DAYS = 120;
 
 type Day = { date: string; level: number; count: number };
 
@@ -62,7 +62,7 @@ if (days) {
       <h2 class="section-label">
         Activity <span class="count">{total}</span>
       </h2>
-      <div class="cg" role="img" aria-label={`${total} GitHub contributions in the last 90 days`}>
+      <div class="cg" role="img" aria-label={`${total} GitHub contributions in the last 120 days`}>
         <div class="cg-months" style={`--weeks:${weeks.length}`}>
           {months.map((m) => <span>{m}</span>)}
         </div>
@@ -76,7 +76,7 @@ if (days) {
           ))}
         </div>
         <div class="cg-meta">
-          <span>{total} contributions, last 90 days</span>
+          <span>{total} contributions, last 120 days</span>
           <span class="cg-legend">
             Less
             <i class="l0" />
@@ -134,7 +134,7 @@ if (days) {
   .cg-months,
   .cg-grid {
     display: grid;
-    grid-template-columns: repeat(var(--weeks), var(--cell));
+    grid-template-columns: repeat(var(--weeks), minmax(0, var(--cell)));
     gap: var(--gap);
   }
   .cg-months {
