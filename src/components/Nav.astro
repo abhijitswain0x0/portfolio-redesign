@@ -193,4 +193,13 @@
       }, 200);
     });
   });
+
+  // Follow OS theme changes while the page is open, unless a theme was picked
+  // manually. System changes stay instant - no animation, not persisted.
+  darkQuery.addEventListener("change", (event) => {
+    const saved = savedTheme();
+    if (saved !== "light" && saved !== "dark") {
+      applyTheme(event.matches ? "dark" : "light", false);
+    }
+  });
 </script>
