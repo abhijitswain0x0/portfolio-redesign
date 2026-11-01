@@ -169,6 +169,7 @@ html[data-theme="dark"] .intro .me .portrait.dark {
 .intro p {
   max-width: 46ch;
   font-size: 16px;
+  font-family: var(--heading);
 }
 
 /* Sections */
@@ -222,6 +223,7 @@ ul.rows li:last-child a.row {
 }
 
 ul.rows .t {
+  font-family: var(--heading);
   font-weight: 500;
   white-space: nowrap;
 }
